@@ -73,4 +73,5 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.15.1")
     kapt("com.github.bumptech.glide:compiler:4.15.1")
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation ("com.google.firebase:firebase-auth:21.0.1")
 }

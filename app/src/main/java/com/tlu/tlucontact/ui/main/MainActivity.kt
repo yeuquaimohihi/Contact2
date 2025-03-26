@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -20,9 +21,10 @@ import com.tlu.tlucontact.databinding.ActivityMainBinding
 import com.tlu.tlucontact.ui.auth.LoginActivity
 import com.tlu.tlucontact.ui.profile.ProfileActivity
 import com.tlu.tlucontact.ui.staff.StaffListFragment
-import com.tlu.tlucontact.ui.students.StudentListFragment
+import com.tlu.tlucontact.ui.student.StudentListFragment
 import com.tlu.tlucontact.ui.units.UnitListFragment
 import com.tlu.tlucontact.util.PreferenceManager
+import com.tlu.tlucontact.util.AuthManager
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         preferenceManager = PreferenceManager(this)
@@ -126,7 +129,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 2,
                 getString(R.string.staff_directory),
                 getString(R.string.staff_directory_desc),
-                R.drawable.ic_staff
+                R.drawable.ic_staff_directory
             )
         )
         options.add(
@@ -134,7 +137,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 3,
                 getString(R.string.student_directory),
                 getString(R.string.student_directory_desc),
-                R.drawable.ic_student
+                R.drawable.ic_student_directory
             )
         )
 

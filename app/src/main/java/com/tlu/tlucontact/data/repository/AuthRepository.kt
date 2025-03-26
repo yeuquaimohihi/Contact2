@@ -16,9 +16,9 @@ class AuthRepository {
     // Đăng ký người dùng mới
     suspend fun register(email: String, password: String, displayName: String): Result<User> {
         return try {
-            // Xác định role từ email
-            val role = FirebaseUtils.determineRoleFromEmail(email)
-            if (role.isEmpty()) {
+            // Xác định type từ email
+            val type = FirebaseUtils.determineRoleFromEmail(email)
+            if (type.isEmpty()) {
                 return Result.failure(Exception("Email không hợp lệ. Vui lòng sử dụng email trường cấp."))
             }
 
@@ -30,7 +30,7 @@ class AuthRepository {
             val user = User(
                 id = userId,
                 email = email,
-                role = role,
+                role = type,
                 displayName = displayName,
                 photoURL = "",
                 phoneNumber = ""

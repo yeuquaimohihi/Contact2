@@ -3,6 +3,7 @@ package com.tlu.tlucontact.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.tlu.tlucontact.util.Constants.KEY_USER_ROLE
 
 class PreferenceManager(context: Context) {
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences(
@@ -67,6 +68,25 @@ class PreferenceManager(context: Context) {
         editor.clear()
         editor.apply()
     }
+    fun saveUserId(userId: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(KEY_USER_ID, userId)
+        editor.apply()
+    }
+    fun saveUserRole(userRole: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(KEY_USER_ROLE, userRole)
+        editor.apply()
+    }
+
+    fun saveUserType(type: String) {
+        sharedPreferences.edit().putString("user_type", type).apply()
+    }
+
+    fun saveUserEmail(email: String) {
+        sharedPreferences.edit().putString("user_email", email).apply()
+    }
+
 
     companion object {
         private const val PREF_NAME = "TLUContactPrefs"
